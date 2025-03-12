@@ -1,12 +1,17 @@
-import { UserDto } from "../../data/dto/UserDto.js";
-import { User } from "../model/User.js";
+import type { PostDto } from "../../data/dto/PostDto.js";
+import { Post } from "../model/Post.js";
 
-export class UserMapper {
-    static toDomain(dto: UserDto): User {
-        return new User(dto.id ?? 0, dto.userName ?? "Unknown User", dto.email ?? "UnknownEmail@unknown.com")
+export class PostMapper {
+    static toDomain(dto: PostDto): Post {
+        return new Post(
+            dto.userId ?? 0,
+            dto.id ?? 0,
+            dto.title ?? "",
+            dto.body ?? ""
+        )
     }
 
-    static toDomainList(dtos: UserDto[]): User[] {
-        return dtos.map(UserMapper.toDomain);
+    static toDomainList(dtos: PostDto[]): Post[] {
+        return dtos.map(PostMapper.toDomain);
     }
 }
