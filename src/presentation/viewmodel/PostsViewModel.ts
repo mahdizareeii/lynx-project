@@ -17,9 +17,11 @@ export class PostsViewModel {
 
     try {
       const posts = await this.getPostsUseCase.execute();
+      console.log("posts fetched" + posts)
       this.updateState({ state: "success", data: posts });
     } catch (error) {
-      this.updateState({ state: "error", message: "Failed to load posts" });
+      console.log("posts fetched error")
+      this.updateState({ state: "error", message: "Failed to load posts" + error });
     }
   }
 
